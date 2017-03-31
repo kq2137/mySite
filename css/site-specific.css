@@ -1,6 +1,6 @@
 body{
     font-family: 'Roboto Condensed', helvetica, sans-serif; 
-    background-color: #ffff00
+    background-color: #ffffff;
 }
 
 div.title{
@@ -9,7 +9,7 @@ div.title{
 }
 
 h1{
-  color: #000000;
+  color: #ff0000;
     font-weight: 400;
     font-size: 2.5em;
     max-width: 800px;
@@ -21,6 +21,7 @@ h1{
 }
 
 h2{
+    color: #FFFF00;
     text-align: center;
 }
 
