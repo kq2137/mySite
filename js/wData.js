@@ -14,7 +14,7 @@ function setup(){
 
 function getWeatherData(apiData){
   weatherData = apiData;
-  console.log(weatherData.main);
+  console.log(weatherData);
 }
 
 // ***** Draw function ***** //

@@ -1,7 +1,7 @@
 var weatherData;
 var apiKey = 'a4f28a6a1aee327802340ba6b7c7dc2c';
 var baseURL = 'http://api.openweathermap.org/data/2.5/weather?q=';
-var city = 'Sydney';
+var city = 'Wuhan';
 var units = 'metric';
 var maxTemp = 40;
 var minTemp = -5;
@@ -19,7 +19,9 @@ var dimensionY = 50;
 
 // ***** Setup function ***** //
 function setup(){
-    createCanvas(1100, 800);
+    var cnv = createCanvas(1300, 800);
+    var x = (windowWidth - width) / 2;
+    cnv.position(x,);
     colorMode(RGB);
     button = select('#submit');
     cityInput = select('#city');
@@ -58,25 +60,54 @@ function draw(){
     drawRect();
     if (weatherData) {
       noStroke();
+      fill(120);
+      textSize(72);
+      text('      ' + city , 0, 405);
+      
+      textSize(48);
+      fill(90,200,125);
+      text(str(currentTemp), 610, 380);
+      fill(270-currentHumidity, 150+currentHumidity, 20);
+      text(str(currentHumidity), 850, 380);
+      fill(80,200,230);
+      text(str(currentP), 1050, 380);     
+      
+      fill(120);
+      textSize(16);
+      text('TEMPERATURE (C)', 600, 405);
+      text('HUMIDITY (%)', 830, 405);
+      text('PRESSURE (hPa)', 1035, 405);
+      textSize(12);
+      fill(80);
+      text('Source: OpenWeatherMap', 500, 540);
+      textSize(10);
       fill(0);
-      text('                    Temperature in ' + city + ' : ' + str(currentTemp) + ' C', 20, 340);
-      text('                    Humidity in ' + city + ' : ' + str(currentHumidity) + '%', 20, 360);
-      text('                    Pressure in ' + city + ' : ' + str(currentP) + '%', 20, 380);
       text('0 C', 100, 55);
       text('10 C', 400, 55);
       text('20 C', 700, 55);
       text('30 C', 1000, 55);
-      text('990%', 60, 65);
-      text('1040%', 60, 290);
+      text('990 % ', 60, 65);
+      text('1040 % ', 60, 290);
+      stroke(80,200,230);
+      strokeWeight(1);
+      line(100, currentP-900, 1200, currentP-900);
+      stroke(90,200,125);
+      strokeWeight(2);
+      line(100+currentTemp*30, 60, 100+currentTemp*30, 280);
+      strokeWeight(0.5);
+      line(100+ minT*30, 60, 100+ minT*30, 280);
+      strokeWeight(0.5);
+      line(100+ maxT*30, 60, 100+ maxT*30, 280);
       stroke(270-currentHumidity, 150+currentHumidity, 20);
       fill(255);
       strokeWeight(3);
-      rect(100+ minT*30 , 100, (maxT-minT)*30, (currentP-1000)*5);
-      strokeWeight(5);
-      line(100+currentTemp*30, 100, 100+currentTemp*30, 100+(currentP-1000)*5);
+      rect(100+ minT*30 , currentP-1000+90, (maxT-minT)*30, 20);
+      stroke(270-currentHumidity, 150+currentHumidity, 20);
+      strokeWeight(8);
+      line(100+currentTemp*30, currentP-1000+90, 100+currentTemp*30, currentP-1000+110);
+
     }
     else{
       text('Loading...', 20, 20);
     }
 }
-
